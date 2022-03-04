@@ -1,0 +1,3 @@
+/Barn/Projects/7.Kitaev_ML/Codes/Dmrg/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Barn/Projects/7.Kitaev_ML/Codes/Dmrg/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Barn/Projects/7.Kitaev_ML/Codes/Dmrg/cmake-build-debug/CMakeFiles/Dmrg.dir
