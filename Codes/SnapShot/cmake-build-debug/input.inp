@@ -1,0 +1,25 @@
+input
+{
+Nx = 3
+Ny = 3
+
+Kx = 1.0
+Ky = 1.0
+Kz = 1.0
+
+Hx = 5.0
+Hy = 5.0
+Hz = 5.0
+
+IsPeriodicX = 1
+IsPeriodicY = 1
+
+maskSize = 3
+mask
+     {
+	latIndx    x    y    z
+	1          0    0    1
+	2          0    0    1
+	3          0    0    1
+     }
+}
