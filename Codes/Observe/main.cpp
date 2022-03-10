@@ -223,7 +223,7 @@ int main(int argc, char* argv[]) {
         outfileZ << " \n";
         std::cout << " \n";
     }
-    outfileY.close();
+    outfileZ.close();
 
     return 0;
 }
