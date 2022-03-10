@@ -16,13 +16,13 @@ int main(int argc, char* argv[]) {
     bool xperiodic = input.getInt("IsPeriodicX");
     bool yperiodic = input.getInt("IsPeriodicY");
 
-    double Kx = input.getInt("Kx");
-    double Ky = input.getInt("Ky");
-    double Kz = input.getInt("Kz");
+    double Kx = input.getReal("Kx");
+    double Ky = input.getReal("Ky");
+    double Kz = input.getReal("Kz");
 
-    double Hx = input.getInt("Hx");
-    double Hy = input.getInt("Hy");
-    double Hz = input.getInt("Hz");
+    double Hx = input.getReal("Hx");
+    double Hy = input.getReal("Hy");
+    double Hz = input.getReal("Hz");
 
     // sweep parameters
     auto totalSweeps = input.getInt("totalSweeps");
