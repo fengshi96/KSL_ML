@@ -42,7 +42,7 @@ int main(int argc, char* argv[]) {
     // Kitaev interaction
     for(auto bnd : lattice) {
         if (bnd.type == "Sx")
-            ampo +=  Kz, bnd.type, bnd.s1, bnd.type, bnd.s2;
+            ampo +=  Kx, bnd.type, bnd.s1, bnd.type, bnd.s2;
         else if (bnd.type == "Sy")
             ampo += Ky, bnd.type, bnd.s1, bnd.type, bnd.s2;
         else if (bnd.type == "Sz")
