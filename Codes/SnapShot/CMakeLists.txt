@@ -20,7 +20,7 @@ link_directories(
 
 set(MKL -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread)
 set(ITENSOR -litensor)
-set(SOURCE_FILES main.cpp)
+set(SOURCE_FILES main.cpp operators.h)
 
 # executable and linking
 add_executable(Observe ${SOURCE_FILES})

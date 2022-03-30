@@ -1,0 +1,188 @@
+Got input.Nx = 4
+Got input.Ny = 3
+Got input.IsPeriodicX = 1
+Got input.IsPeriodicY = 1
+Got input.Kx = 1
+Got input.Ky = 1
+Got input.Kz = 1
+Got input.Hx = 0
+Got input.Hy = 0
+Got input.Hz = 0
+Got input.totalSweeps = 12
+Sweeps:
+1  MaxDim=200, MinDim=100, Cutoff=1.0E-08, Niter=2, Noise=1.0E-05
+2  MaxDim=300, MinDim=100, Cutoff=1.0E-08, Niter=2, Noise=1.0E-06
+3  MaxDim=300, MinDim=100, Cutoff=1.0E-08, Niter=2, Noise=1.0E-07
+4  MaxDim=300, MinDim=100, Cutoff=1.0E-08, Niter=2, Noise=1.0E-08
+5  MaxDim=300, MinDim=100, Cutoff=1.0E-08, Niter=2, Noise=1.0E-08
+6  MaxDim=400, MinDim=100, Cutoff=1.0E-08, Niter=2, Noise=1.0E-08
+7  MaxDim=400, MinDim=100, Cutoff=1.0E-08, Niter=2, Noise=1.0E-08
+8  MaxDim=500, MinDim=100, Cutoff=1.0E-08, Niter=2, Noise=1.0E-08
+9  MaxDim=600, MinDim=100, Cutoff=1.0E-08, Niter=2, Noise=1.0E-08
+10  MaxDim=700, MinDim=100, Cutoff=1.0E-08, Niter=3, Noise=1.0E-09
+11  MaxDim=800, MinDim=100, Cutoff=1.0E-08, Niter=3, Noise=1.0E-10
+12  MaxDim=800, MinDim=100, Cutoff=1.0E-08, Niter=4, Noise=0.0E+00
+
+creating Honeycomb ... 
+1	0	0	0	0	0	
+0	2	3	0	0	0	
+7	0	0	4	5	0	
+0	8	9	0	0	6	
+13	0	0	10	11	0	
+0	14	15	0	0	12	
+19	0	0	16	17	0	
+0	20	21	0	0	18	
+0	0	0	22	23	0	
+0	0	0	0	0	24	
+0	0	0	0	0	0	
+
+6	20	2	
+3	7	1	
+2	22	4	
+5	9	3	
+4	24	6	
+1	11	5	
+12	2	8	
+9	13	7	
+8	4	10	
+11	15	9	
+10	6	12	
+7	17	11	
+18	8	14	
+15	19	13	
+14	10	16	
+17	21	15	
+16	12	18	
+13	23	17	
+24	14	20	
+21	1	19	
+20	16	22	
+23	3	21	
+22	18	24	
+19	5	23	
+
+(3,2,Sz)
+(5,4,Sz)
+(6,1,Sz)
+(9,8,Sz)
+(11,10,Sz)
+(12,7,Sz)
+(15,14,Sz)
+(17,16,Sz)
+(18,13,Sz)
+(21,20,Sz)
+(23,22,Sz)
+(24,19,Sz)
+(7,2,Sy)
+(9,4,Sy)
+(11,6,Sy)
+(13,8,Sy)
+(15,10,Sy)
+(17,12,Sy)
+(19,14,Sy)
+(20,1,Sy)
+(21,16,Sy)
+(22,3,Sy)
+(23,18,Sy)
+(24,5,Sy)
+(2,1,Sx)
+(4,3,Sx)
+(6,5,Sx)
+(8,7,Sx)
+(10,9,Sx)
+(12,11,Sx)
+(14,13,Sx)
+(16,15,Sx)
+(18,17,Sx)
+(20,19,Sx)
+(22,21,Sx)
+(24,23,Sx)
+Initial energy = (-3.00000,0.00000)
+
+    vN Entropy at center bond b=12 = 0.854309029591
+    Eigs at center bond b=12: 0.8097 0.0461 0.0395 0.0350 0.0230 0.0199 0.0180 0.0022 0.0019 0.0014 
+    Largest link dim during sweep 1/12 was 200
+    Largest truncation error: 6.6034998e-07
+    Energy after sweep 1/12 is -4.592515090307
+    Sweep 1/12 CPU time = 19.40s (Wall time = 2.873s)
+
+    vN Entropy at center bond b=12 = 1.617706901830
+    Eigs at center bond b=12: 0.6285 0.0709 0.0707 0.0704 0.0192 0.0190 0.0189 0.0180 0.0173 0.0168 
+    Largest link dim during sweep 2/12 was 300
+    Largest truncation error: 1.6627349e-05
+    Energy after sweep 2/12 is -4.654761143263
+    Sweep 2/12 CPU time = 1m, 32.5s (Wall time = 12.93s)
+
+    vN Entropy at center bond b=12 = 2.205476432650
+    Eigs at center bond b=12: 0.4838 0.0614 0.0598 0.0593 0.0590 0.0582 0.0576 0.0183 0.0179 0.0177 
+    Largest link dim during sweep 3/12 was 300
+    Largest truncation error: 3.4019164e-05
+    Energy after sweep 3/12 is -4.668551942696
+    Sweep 3/12 CPU time = 1m, 42.8s (Wall time = 14.60s)
+
+    vN Entropy at center bond b=12 = 2.512861216445
+    Eigs at center bond b=12: 0.3733 0.0940 0.0927 0.0897 0.0482 0.0477 0.0475 0.0195 0.0191 0.0187 
+    Largest link dim during sweep 4/12 was 300
+    Largest truncation error: 3.4402696e-05
+    Energy after sweep 4/12 is -4.671944029517
+    Sweep 4/12 CPU time = 1m, 36.5s (Wall time = 13.52s)
+
+    vN Entropy at center bond b=12 = 2.654293079141
+    Eigs at center bond b=12: 0.3251 0.1054 0.1039 0.0995 0.0428 0.0425 0.0422 0.0197 0.0193 0.0187 
+    Largest link dim during sweep 5/12 was 300
+    Largest truncation error: 3.4983906e-05
+    Energy after sweep 5/12 is -4.673314126429
+    Sweep 5/12 CPU time = 1m, 34.3s (Wall time = 13.12s)
+
+    vN Entropy at center bond b=12 = 2.807932946883
+    Eigs at center bond b=12: 0.2857 0.1112 0.1073 0.1034 0.0384 0.0381 0.0379 0.0196 0.0195 0.0191 
+    Largest link dim during sweep 6/12 was 400
+    Largest truncation error: 7.5801057e-06
+    Energy after sweep 6/12 is -4.676291824327
+    Sweep 6/12 CPU time = 2m, 18.2s (Wall time = 19.44s)
+
+    vN Entropy at center bond b=12 = 2.940341460854
+    Eigs at center bond b=12: 0.2544 0.1120 0.1080 0.1037 0.0348 0.0346 0.0343 0.0266 0.0251 0.0209 
+    Largest link dim during sweep 7/12 was 400
+    Largest truncation error: 9.3868035e-06
+    Energy after sweep 7/12 is -4.677002823543
+    Sweep 7/12 CPU time = 2m, 4.0s (Wall time = 17.20s)
+
+    vN Entropy at center bond b=12 = 3.033082133527
+    Eigs at center bond b=12: 0.2349 0.1110 0.1075 0.1027 0.0325 0.0323 0.0320 0.0308 0.0293 0.0246 
+    Largest link dim during sweep 8/12 was 500
+    Largest truncation error: 4.0281181e-06
+    Energy after sweep 8/12 is -4.678085791895
+    Sweep 8/12 CPU time = 2m, 54.9s (Wall time = 24.53s)
+
+    vN Entropy at center bond b=12 = 3.113356072743
+    Eigs at center bond b=12: 0.2191 0.1093 0.1064 0.1014 0.0337 0.0320 0.0306 0.0304 0.0300 0.0271 
+    Largest link dim during sweep 9/12 was 600
+    Largest truncation error: 1.5623189e-06
+    Energy after sweep 9/12 is -4.678590487097
+    Sweep 9/12 CPU time = 3m, 47.6s (Wall time = 32.35s)
+
+    vN Entropy at center bond b=12 = 3.200228715335
+    Eigs at center bond b=12: 0.2030 0.1069 0.1048 0.0996 0.0350 0.0332 0.0288 0.0285 0.0281 0.0279 
+    Largest link dim during sweep 10/12 was 700
+    Largest truncation error: 4.5682364e-07
+    Energy after sweep 10/12 is -4.678933276458
+    Sweep 10/12 CPU time = 5m, 34.7s (Wall time = 47.97s)
+
+    vN Entropy at center bond b=12 = 3.235893911366
+    Eigs at center bond b=12: 0.1956 0.1068 0.1043 0.0986 0.0338 0.0319 0.0280 0.0275 0.0271 0.0269 
+    Largest link dim during sweep 11/12 was 800
+    Largest truncation error: 9.7808025e-08
+    Energy after sweep 11/12 is -4.679076893547
+    Sweep 11/12 CPU time = 6m, 42.7s (Wall time = 59.69s)
+
+    vN Entropy at center bond b=12 = 3.245003883970
+    Eigs at center bond b=12: 0.1915 0.1091 0.1049 0.0964 0.0342 0.0314 0.0305 0.0284 0.0279 0.0270 
+    Largest link dim during sweep 12/12 was 800
+    Largest truncation error: 1.0041064e-07
+    Energy after sweep 12/12 is -4.679276998852
+    Sweep 12/12 CPU time = 7m, 14.1s (Wall time = 1m, 1.3s)
+
+Ground State Energy = -4.6792769989
+
+Using overlap = (-4.6792769989,0.0000000000)

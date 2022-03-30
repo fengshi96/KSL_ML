@@ -3,6 +3,8 @@ input
 Nx = 3
 Ny = 3
 
+Coupling = Heisenberg
+
 Kx = 1.0
 Ky = 1.0
 Kz = 1.0

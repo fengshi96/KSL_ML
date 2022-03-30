@@ -1,6 +1,7 @@
 #include <iostream>
 #include "itensor/all.h"
 #include "src/honeycomb.h"
+#include "src/operators.h"
 
 using namespace itensor;
 
@@ -12,6 +13,7 @@ int main(int argc, char* argv[]) {
     auto input = InputGroup(argv[1],"input");
     int Nx = input.getInt("Nx");
     int Ny = input.getInt("Ny");
+    std::string Coupling = input.getString("Coupling");
     int N = Nx*Ny*2;
     bool xperiodic = input.getInt("IsPeriodicX");
     bool yperiodic = input.getInt("IsPeriodicY");
@@ -39,15 +41,25 @@ int main(int argc, char* argv[]) {
     std::cout << lattice;
 
     auto ampo = AutoMPO(sites);
-    // Kitaev interaction
-    for(auto bnd : lattice) {
-        if (bnd.type == "Sx")
-            ampo +=  Kx, bnd.type, bnd.s1, bnd.type, bnd.s2;
-        else if (bnd.type == "Sy")
-            ampo += Ky, bnd.type, bnd.s1, bnd.type, bnd.s2;
-        else if (bnd.type == "Sz")
-            ampo += Kz, bnd.type, bnd.s1, bnd.type, bnd.s2;
+    if (Coupling == "Kitaev") {
+        // Kitaev interaction
+        for(auto bnd : lattice) {
+            if (bnd.type == "Sx")
+                ampo +=  Kx, bnd.type, bnd.s1, bnd.type, bnd.s2;
+            else if (bnd.type == "Sy")
+                ampo += Ky, bnd.type, bnd.s1, bnd.type, bnd.s2;
+            else if (bnd.type == "Sz")
+                ampo += Kz, bnd.type, bnd.s1, bnd.type, bnd.s2;
+        }
+    } else if (Coupling == "Heisenberg") {
+        // Heisenberg interaction
+        for(auto bnd : lattice) {
+            ampo +=  Kx, "Sx", bnd.s1, "Sx", bnd.s2;
+            ampo +=  Ky, "Sy", bnd.s1, "Sy", bnd.s2;
+            ampo +=  Kz, "Sz", bnd.s1, "Sz", bnd.s2;
+        }
     }
+
 
 
     // Add magnetic field

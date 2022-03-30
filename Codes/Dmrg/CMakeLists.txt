@@ -21,5 +21,5 @@ set(MKL -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthrea
 set(ITENSOR -litensor)
 set(SOURCE_FILES main.cpp src/honeycomb.h)
 
-add_executable(Dmrg main.cpp src/honeycomb.h)
+add_executable(Dmrg main.cpp src/honeycomb.h src/operators.h)
 target_link_libraries(Dmrg ${MKL} ${ITENSOR})

@@ -3,6 +3,7 @@
 
 CMakeFiles/Observe.dir/main.cpp.o: \
  ../main.cpp \
+ ../operators.h \
  /home/shifeng/Codes/0.Codes/ITensor/itensor/all.h \
  /home/shifeng/Codes/0.Codes/ITensor/itensor/all_basic.h \
  /home/shifeng/Codes/0.Codes/ITensor/itensor/all_mps.h \

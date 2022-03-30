@@ -25,11 +25,10 @@ int main(int argc, char* argv[]) {
     double Hy = input.getReal("Hy");
     double Hz = input.getReal("Hz");
 
-    // sweep parameters
-    auto totalSweeps = input.getInt("totalSweeps");
-    auto sw_table = InputGroup(input,"sweep_table");
-    auto sweeps = Sweeps(totalSweeps,sw_table);
-    println(sweeps);
+    int spin2pauli = input.getInt("spin2pauli");
+    bool multiPoint = input.getInt("multiPoint");
+
+
 
     auto sites = SpinHalf(N,{"ConserveQNs=",false});
     auto ampo = AutoMPO(sites);
@@ -224,6 +223,99 @@ int main(int argc, char* argv[]) {
         std::cout << " \n";
     }
     outfileZ.close();
+
+    if (multiPoint) {
+        // ================= Read in mask ====================================
+        int maskSize = input.getInt("maskSize");
+        std::vector<int> mpsIndx(maskSize);
+        std::vector<int> x(maskSize);
+        std::vector<int> y(maskSize);
+        std::vector<int> z(maskSize);
+        auto mask = InputGroup(input, "mask");
+        printfln("mpsId x y z");
+        if (mask.GotoGroup()) {
+            mask.SkipLine();
+            for (int i = 0; i<maskSize; i++) {
+                mask.file() >> mpsIndx[i] >> x[i] >> y[i] >> z[i];
+                assert(x[i] + y[i] + z[i] == 1);
+                printfln("  %d   %d %d %d",mpsIndx[i],x[i],y[i],z[i]);
+            }
+        } else {
+            Error("Couldn't find mask " + mask.name());
+        }
+
+        // =================== Multi-Point Observables =========================
+        int start = *std::min_element(mpsIndx.begin(), mpsIndx.end()); println("Mask start at site: ", start);
+        int end = *std::max_element(mpsIndx.begin(), mpsIndx.end()); println("Mask ends at site: ", end);
+
+        // initialize the tensor train from the left side
+        psi.position(start);
+        ITensor C = psi(start);
+
+        // the head of tensor train
+        std::string S_op;
+        if (x[0] == 1) {
+            S_op = "Sx";
+        }
+        else {
+            if (y[0] == 1) {
+                S_op = "Sy";
+            } else {
+                S_op = "Sz";
+            }
+        }
+        println("\nhead op = ", S_op, " at site ", start);
+        C *= op(sites, S_op, start);
+        auto ir = commonIndex(psi(start),psi(start+1),"Link");
+        C *= dag(prime(prime(psi(start), "Site"), ir));
+        C *= psi(start+1);
+
+        // the bulk of tensor train
+        int countId = 0;
+        for (int i = start+1; i < end; i++) { // i-th neighbor to the right of the head
+            if (std::find(mpsIndx.begin(), mpsIndx.end(), i) != mpsIndx.end()) {
+                // if i+1 is in mpsIndx (continuous indices)
+                if (x[i-start-countId] == 1) {
+                    S_op = "Sx";
+                } else {
+                    if (y[i-start-countId] == 1) {
+                        S_op = "Sy";
+                    } else {
+                        S_op = "Sz";
+                    }
+                }
+                println("bulk op = ", S_op, " at site ", i);
+                C *= op(sites, S_op, i);
+                C *= dag(prime(prime(psi(i), "Site"), "Link"));
+                C *= psi(i+1);
+            } else {
+                println("directly contract trivial bulk tensor at ", i);
+                countId ++;
+                C *= dag(prime(psi(i), "Link"));
+                C *= psi(i+1);
+            }
+        }
+
+        // the tail of tensor train
+        if (x[maskSize-1] == 1) {
+            S_op = "Sx";
+        } else {
+            if (y[maskSize-1] == 1) {
+                S_op = "Sy";
+            } else {
+                S_op = "Sz";
+            }
+        }
+        println("tail op = ", S_op, " at site ", end, '\n');
+        C *= op(sites, S_op, end);
+        auto il = commonIndex(psi(end-1),psi(end),"Link");
+        C *= dag(prime(prime(psi(end), "Site"), il));
+
+        auto results = eltC(C);
+        if (spin2pauli)
+            results *= pow(2,maskSize);
+        std::cout << "Result = " << results << std::endl;
+    }
 
     return 0;
 }

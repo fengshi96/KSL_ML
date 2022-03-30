@@ -1,34 +1,31 @@
 input
 {
-Nx = 3
+Nx = 4
 Ny = 3
 
 Kx = 1.0
 Ky = 1.0
 Kz = 1.0
 
-Hx = 5.0
-Hy = 5.0
-Hz = 5.0
+Hx = 0.0
+Hy = 0.0
+Hz = 0.0
 
 IsPeriodicX = 1
 IsPeriodicY = 1
 
-totalSweeps=12
-sweep_table
+spin2pauli = 1
+
+multiPoint = 1
+maskSize = 6
+mask
      {
-     maxm   minm  cutoff  niter  noise
-     100     100    1E-8    2     1E-5
-     200     100    1E-8    2     1E-6
-     200     100    1E-8    2     1E-7
-     300     100    1E-8    2     1E-8
-     500     100    1E-8    2     1E-8
-     500     100    1E-8    2     1E-8
-     500     100    1E-8    2     1E-8
-     500     100    1E-8    2     1E-8
-     500     100    1E-8    2     1E-8
-     500     100    1E-8    3     1E-9
-     700     100    1E-8    3     1E-10
-     800     100    1E-8    4      0
+	latIndx    x    y    z
+	1          1    0    0
+	2          0    1    0
+	3          0    0    1
+	4          0    0    1
+	5          0    1    0
+	6          1    0    0
      }
 }

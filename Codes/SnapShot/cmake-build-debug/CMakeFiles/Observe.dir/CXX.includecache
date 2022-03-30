@@ -11,6 +11,8 @@ iostream
 -
 itensor/all.h
 /Barn/Projects/7.Kitaev_ML/Codes/SnapShot/itensor/all.h
+operators.h
+/Barn/Projects/7.Kitaev_ML/Codes/SnapShot/operators.h
 Eigen/Dense
 -
 iomanip
@@ -19,6 +21,8 @@ array
 -
 algorithm
 -
+
+/Barn/Projects/7.Kitaev_ML/Codes/SnapShot/operators.h
 
 /home/shifeng/Codes/0.Codes/ITensor/itensor/all.h
 itensor/all_mps.h

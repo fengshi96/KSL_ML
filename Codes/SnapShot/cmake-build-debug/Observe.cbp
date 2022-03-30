@@ -91,6 +91,9 @@
 		<Unit filename="/Barn/Projects/7.Kitaev_ML/Codes/SnapShot/main.cpp">
 			<Option target="Observe"/>
 		</Unit>
+		<Unit filename="/Barn/Projects/7.Kitaev_ML/Codes/SnapShot/operators.h">
+			<Option target="Observe"/>
+		</Unit>
 		<Unit filename="/Barn/Projects/7.Kitaev_ML/Codes/SnapShot/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

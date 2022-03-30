@@ -1,0 +1,35 @@
+input
+{
+Nx = 3
+Ny = 3
+Coupling = Heisenberg
+
+Kx = 1.0
+Ky = 1.0
+Kz = 1.0
+
+Hx = 0.0
+Hy = 0.0
+Hz = 0.0
+
+IsPeriodicX = 1
+IsPeriodicY = 1
+
+totalSweeps=12
+sweep_table
+     {
+     maxm   minm  cutoff  niter  noise
+     100     100    1E-8    8     1E-5
+     200     100    1E-8    8     1E-6
+     200     100    1E-8    7     1E-7
+     300     100    1E-8    7     1E-8
+     500     100    1E-8    6      0
+     500     100    1E-8    5      0
+     500     100    1E-8    4      0
+     500     100    1E-8    3      0
+     500     100    1E-8    3      0
+     800     100    1E-8    3      0
+     800     100    1E-8    3      0
+     800     100    1E-8    3      0
+     }
+}
