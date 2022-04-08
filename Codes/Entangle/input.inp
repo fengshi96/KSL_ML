@@ -1,0 +1,20 @@
+input
+{
+Nx = 4
+Ny = 3
+
+
+Kx = 1.0
+Ky = 1.0
+Kz = 1.0
+
+Hx = 0.0
+Hy = 0.0
+Hz = 0.0
+
+IsPeriodicX = 1
+IsPeriodicY = 1
+
+sysIndx = 0,1,2,3,4,5
+
+}

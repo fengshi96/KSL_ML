@@ -57,52 +57,86 @@ int main(int argc, char* argv[]) {
     readFromFile("sites.dat",sites);
     auto psi = readFromFile<MPS>(std::string("psi.dat"),sites);
 
-    // =================== Multi-Point Observables =========================
+
+    // ============== Build RDM from MPS =================
     int start = *std::min_element(mpsIndx.begin(), mpsIndx.end()); println("Mask start at site: ", start);
     int end = *std::max_element(mpsIndx.begin(), mpsIndx.end()); println("Mask ends at site: ", end);
 
-    // initialize the tensor train from the left side
     psi.position(start);
-    ITensor C = psi(start);
+    auto psidag = dag(psi);
+    psidag.prime("Link");
 
-    // the head of tensor train
-    std::string S_op;
-    S_op = maskList[0];
-    println("\nhead op = ", S_op, " at site ", start);
-    C *= myOp(sites(start), S_op); // op(sites, S_op, start);
-    auto ir = commonIndex(psi(start),psi(start+1),"Link");
-    C *= dag(prime(prime(psi(start), "Site"), ir));
-    C *= psi(start+1);
-
+    auto li_1 = leftLinkIndex(psi, start);
+    auto rho = prime(psi(start), li_1)*prime(psidag(start), "Site");
     // the bulk of tensor train
-    int countId = 0;
     for (int i = start+1; i < end; i++) { // i-th neighbor to the right of the head
         if (std::find(mpsIndx.begin(), mpsIndx.end(), i) != mpsIndx.end()) {
             // if i+1 is in mpsIndx (continuous indices)
-            S_op = maskList[i-start-countId];
-            println("bulk op = ", S_op, " at site ", i);
-            C *= myOp(sites(i), S_op); //op(sites, S_op, i);
-            C *= dag(prime(prime(psi(i), "Site"), "Link"));
-            C *= psi(i+1);
+            println("if true");
+            auto li = rightLinkIndex(psi, i);
+            rho *= prime(psi(i), li);
+            rho *= prime(psidag(i), "Site");
         } else {
-            println("directly contract trivial bulk tensor at ", i);
-            countId ++;
-            C *= dag(prime(psi(i), "Link"));
-            C *= psi(i+1);
+            println("else");
+            rho *= psi(i);
+            rho *= psidag(i);
         }
     }
 
-    // the tail of tensor train
-    S_op = maskList[maskSize-1];
-    println("tail op = ", S_op, " at site ", end, '\n');
-    C *= myOp(sites(end), S_op);
-    auto il = commonIndex(psi(end-1),psi(end),"Link");
-    C *= dag(prime(prime(psi(end), "Site"), il));
+//    auto lend = rightLinkIndex(psi, end);
+//    rho *= prime(psi(end), lend);
+//    rho *= prime(psidag(end), "Site");
 
-    auto results = eltC(C);
-    if (spin2pauli)
-        results *= pow(2,maskSize);
-    std::cout << "Result = " << results << std::endl;
+
+
+
+
+//    // =================== Multi-Point Observables =========================
+//    int start = *std::min_element(mpsIndx.begin(), mpsIndx.end()); println("Mask start at site: ", start);
+//    int end = *std::max_element(mpsIndx.begin(), mpsIndx.end()); println("Mask ends at site: ", end);
+//
+//    // initialize the tensor train from the left side
+//    psi.position(start);
+//    ITensor C = psi(start);
+//
+//    // the head of tensor train
+//    std::string S_op;
+//    S_op = maskList[0];
+//    println("\nhead op = ", S_op, " at site ", start);
+//    C *= myOp(sites(start), S_op); // op(sites, S_op, start);
+//    auto ir = commonIndex(psi(start),psi(start+1),"Link");
+//    C *= dag(prime(prime(psi(start), "Site"), ir));
+//    C *= psi(start+1);
+//
+//    // the bulk of tensor train
+//    int countId = 0;
+//    for (int i = start+1; i < end; i++) { // i-th neighbor to the right of the head
+//        if (std::find(mpsIndx.begin(), mpsIndx.end(), i) != mpsIndx.end()) {
+//            // if i+1 is in mpsIndx (continuous indices)
+//            S_op = maskList[i-start-countId];
+//            println("bulk op = ", S_op, " at site ", i);
+//            C *= myOp(sites(i), S_op); //op(sites, S_op, i);
+//            C *= dag(prime(prime(psi(i), "Site"), "Link"));
+//            C *= psi(i+1);
+//        } else {
+//            println("directly contract trivial bulk tensor at ", i);
+//            countId ++;
+//            C *= dag(prime(psi(i), "Link"));
+//            C *= psi(i+1);
+//        }
+//    }
+//
+//    // the tail of tensor train
+//    S_op = maskList[maskSize-1];
+//    println("tail op = ", S_op, " at site ", end, '\n');
+//    C *= myOp(sites(end), S_op);
+//    auto il = commonIndex(psi(end-1),psi(end),"Link");
+//    C *= dag(prime(prime(psi(end), "Site"), il));
+//
+//    auto results = eltC(C);
+//    if (spin2pauli)
+//        results *= pow(2,maskSize);
+//    std::cout << "Result = " << results << std::endl;
 
 //        // ====test====
 //        ITensor Sz_2 = op(sites, "Sx", 2);

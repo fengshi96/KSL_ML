@@ -99,6 +99,8 @@ int main(int argc, char* argv[]) {
     writeToFile(std::string("sites.dat"),sites);
     writeToFile(std::string("psi.dat"),psi);
 
+    //auto f = h5_open()
+
 
     return 0;
 }

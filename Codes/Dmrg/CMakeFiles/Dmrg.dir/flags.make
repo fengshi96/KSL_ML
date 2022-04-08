@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/shifeng/Codes/0.Codes/ITensor -I/home/shifeng/Codes/0.Codes/intel/oneapi/mkl/latest/include
+CXX_INCLUDES = -I/home/shifeng/Codes/0.Codes/ITensor -I/home/shifeng/Codes/0.Codes/eigen3 -I/home/shifeng/Codes/0.Codes/intel/oneapi/mkl/latest/include
 
 CXX_FLAGS = -g -DMKL_ILP64 -m64 -Wl,--no-as-needed -std=gnu++17
 

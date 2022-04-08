@@ -45,6 +45,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/shifeng/Codes/0.Codes/ITensor"/>
+					<Add directory="/home/shifeng/Codes/0.Codes/eigen3"/>
 					<Add directory="/home/shifeng/Codes/0.Codes/intel/oneapi/mkl/latest/include"/>
 				</Compiler>
 				<MakeCommands>
@@ -62,6 +63,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/shifeng/Codes/0.Codes/ITensor"/>
+					<Add directory="/home/shifeng/Codes/0.Codes/eigen3"/>
 					<Add directory="/home/shifeng/Codes/0.Codes/intel/oneapi/mkl/latest/include"/>
 				</Compiler>
 				<MakeCommands>

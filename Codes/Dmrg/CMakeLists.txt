@@ -8,6 +8,7 @@ add_compile_options(-DMKL_ILP64 -m64 -Wl,--no-as-needed)
 # Flags of sources, headers and libraries
 include_directories(
         /home/shifeng/Codes/0.Codes/ITensor
+        /home/shifeng/Codes/0.Codes/eigen3
         /home/shifeng/Codes/0.Codes/intel/oneapi/mkl/latest/include
 )
 

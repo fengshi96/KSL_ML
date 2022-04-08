@@ -15,6 +15,7 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/shifeng/Codes/0.Codes/ITensor"
+  "/home/shifeng/Codes/0.Codes/eigen3"
   "/home/shifeng/Codes/0.Codes/intel/oneapi/mkl/latest/include"
   )
 
