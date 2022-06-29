@@ -6,7 +6,7 @@ include("src/sampler.jl")
 
 let
     Nsite = 56
-    f = h5open("data/data56.h5","r")
+    f = h5open("data/data_TC.h5","r")
     @time ψ = read(f,"psi",MPS)
     close(f)
     siteSet = siteinds(ψ)   
@@ -20,4 +20,7 @@ let
 
     data = hcat(sites, axes, sample, probs)
     println(); show(stdout, "text/plain", data); println()
+
+#     orthogonalize!(ψ, 2)
+#     println(ψ[2])
 end

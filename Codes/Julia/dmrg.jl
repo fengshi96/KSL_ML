@@ -31,22 +31,30 @@ let
         nz::Int64 = nn[j, 3]
         
         if j < nn[j, 1]
-            ampo += 1, "Sx", j, "Sx", nx
+            ampo += Kx, "Sx", j, "Sx", nx
         end
         if j < nn[j, 2]
-            ampo += 1, "Sy", j, "Sy", ny
+            ampo += Ky, "Sy", j, "Sy", ny
         end
         if j < nn[j, 3]
-            ampo += 1, "Sz", j, "Sz", nz
+            ampo += Kz, "Sz", j, "Sz", nz
         end
     end
     
     H = MPO(ampo, sites)
     psi0 = randomMPS(sites, 100)
 
-    sweeps = Sweeps(12)
-    setmaxdim!(sweeps, 100, 200, 200, 300, 400, 500, 500, 500, 500, 500, 700, 800)
-    setcutoff!(sweeps, 1E-9)
+    sweeps = Sweeps([
+         "maxdim" "mindim" "cutoff" "noise"
+          100      100       1e-12    1E-7
+          200      100       1e-12    1E-8
+          200      100       1e-12    0
+          200      100       1e-12    0
+          300      100       1e-12    0
+          300      100       1e-12    0
+          300      100       1e-12    0
+          300      100       1e-12    0
+         ])
 
     energy, psi = dmrg(H, psi0, sweeps)
 

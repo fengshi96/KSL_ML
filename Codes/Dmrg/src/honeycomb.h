@@ -39,7 +39,9 @@ alg::Matrix<int> Honeycomb(size_t Nx, size_t Ny, bool xPBC = true, bool yPBC = t
     int Number1Neigh_ = 3;
     int Nsite_ = Nx * Ny * 2;
 
-    alg::Matrix<int> Nc_, N1neigh_(Nsite_, Number1Neigh_);
+    alg::Matrix<int> Nc_;
+    alg::Matrix<int> N1neigh_(Nsite_, Number1Neigh_);
+    N1neigh_.fill(-2);
     std::vector<int> indx_, indy_;
 
 

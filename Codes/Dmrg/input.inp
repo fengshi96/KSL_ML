@@ -13,7 +13,7 @@ Hx = 0.0
 Hy = 0.0
 Hz = 0.0
 
-IsPeriodicX = 1
+IsPeriodicX = 0
 IsPeriodicY = 1
 
 totalSweeps=12
